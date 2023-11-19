@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Мое резюме{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <p><a href="{{ url_for('send') }}">Перейти ко второй части</a> страница загрузится не сразу потому что функция будет парсить с пагинацией</p>
+        <h5>Здесь мы выводим простую таблицу считанных данных. https://b7w2x7a.retailcrm.ru/api/v5/orders</h5>
+            <p>Статус запроса:{{ json.success }}</p>
+            <h4>После получения данных мы проводим их очистку данных и отправляем два Post запроса на сервер. (/site/add_site_data/, /site/add_site_items/)
+                оба запроса имеют разные данные и отправляются одновременно уже очищенные и подготовленные. Засунул их выполнение в одну кнопку для удобства. 
+                в консоли увидите сообщение об ответе. </h4>
+            <form action="/" method="post">
+                <button type="submit" class="btn btn-primary">Отправить данные</button>
+             </form>
+            <p>Информация о пагинации: {{ json.pagination }}</p>
+            <p>Список id полученных с сайта:(всю информацию выводить не стал.)</p>
+            {% for value in json.orders %}
+                <dd>{{ value.id|e }}</dd>
+            {% endfor %}
+    </div>
+{% endblock %}

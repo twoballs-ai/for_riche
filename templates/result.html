@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Мое резюме{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <p><a href="{{ url_for('send') }}">Перейти ко второй части</a> страница загрузится не сразу потому что функция будет парсить с пагинацией</p>
+        <p>site/add_site_data {{ resp_data }}</p>
+        <p>site/add_site_items {{ resp_items }}</p>
+
+    </div>
+{% endblock %}
